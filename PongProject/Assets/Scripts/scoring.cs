@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class scoring : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class scoring : MonoBehaviour
         userScore += 1;
         if (userScore == beatingScore)
         {
-            
+            SceneManager.LoadScene("WinScreen");
         }
     }
 
@@ -34,7 +35,7 @@ public class scoring : MonoBehaviour
         computerScore += 1;
         if (computerScore == beatingScore)
         {
-            
+            SceneManager.LoadScene("LoseScreen");
         }
     }
 }
