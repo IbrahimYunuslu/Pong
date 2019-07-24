@@ -31,15 +31,15 @@ public class ballMovement : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.name == "top")
+        if (other.gameObject.name == "top" && other.gameObject.name == "bottomWall")
         {
-            body.velocity += new Vector2(0,1).normalized;
+            body.velocity += new Vector2(0,0.05f).normalized;
         }else if (other.gameObject.name == "middle")
         {
-            body.velocity += new Vector2(1,1).normalized;
-        }else if (other.gameObject.name == "bottom")
+            body.velocity += new Vector2(0.05f,0.05f).normalized;
+        }else if (other.gameObject.name == "bottom" && other.gameObject.name == "topWall")
         {
-            body.velocity += new Vector2(0,-1).normalized;
+            body.velocity += new Vector2(0,-0.05f).normalized;
         }
     }
 

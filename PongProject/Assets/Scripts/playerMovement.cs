@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +9,7 @@ public class playerMovement : MonoBehaviour
     public float speed = 10;
     private float height;
     private ballMovement ball;
+    private bool pause;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class playerMovement : MonoBehaviour
         }
         else
         {
-            if (ball.posX < 0)
+            if (ball.posX < 0 && !pause)
             {
                 ComputerMovement();
             }
@@ -51,6 +52,19 @@ public class playerMovement : MonoBehaviour
     }
 
     void ComputerMovement(){
+
+        if (transform.position.y >= ball.posY && transform.position.y <= ball.posY - 0.15f )
+        {
+            pause = true;
+            Invoke("PauseBall",0.05f);
+            return;
+        }else if (transform.position.y <= ball.posY && transform.position.y >= ball.posY - 0.15f )
+        {
+            pause = true;
+            Invoke("PauseBall",0.05f);
+            return;
+        }
+
         if (transform.position.y > ball.posY)
         {
             MovePlayerDown();
@@ -61,6 +75,10 @@ public class playerMovement : MonoBehaviour
 
         float restrictedY = Mathf.Clamp(transform.position.y, downMost.y, upMost.y);
         transform.position = new Vector3(transform.position.x, restrictedY, transform.position.z);
+    }
+
+    void PauseBall(){
+        pause = false;
     }
 
     void MovePlayerUp(){
