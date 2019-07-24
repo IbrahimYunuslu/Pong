@@ -7,6 +7,7 @@ public class scoring : MonoBehaviour
 {
     public Text userScoreUI, computerScoreUI;
     [HideInInspector] public int userScore, computerScore;
+    public int beatingScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +24,17 @@ public class scoring : MonoBehaviour
 
     public void PlayerScore(){
         userScore += 1;
+        if (userScore == beatingScore)
+        {
+            
+        }
     }
 
     public void ComputerScore(){
         computerScore += 1;
+        if (computerScore == beatingScore)
+        {
+            
+        }
     }
 }

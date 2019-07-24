@@ -9,10 +9,14 @@ public class ballMovement : MonoBehaviour
     private float forceX, forceY;
     [HideInInspector] public float posX, posY, x, y; 
     private scoring score;
+    private AudioSource gameAudio;
+    public AudioClip ball, menu, playerHit, computerHit, playerWin, computerWin;
     private bool toLeft;
     // Start is called before the first frame update
     void Start()
     {
+        gameAudio = GetComponent<AudioSource>();
+        // = GetComponent<AudioClip>();
         x = transform.position.x;
         y = transform.position.y;
         score = GameObject.FindObjectOfType<scoring>();
@@ -50,6 +54,8 @@ public class ballMovement : MonoBehaviour
         {
             body.velocity += new Vector2(0,-0.05f).normalized;
         }
+        gameAudio.clip = ball;
+        gameAudio.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -57,13 +63,17 @@ public class ballMovement : MonoBehaviour
         {
             score.PlayerScore();
             toLeft = true;
+            gameAudio.clip = playerHit;
+            gameAudio.Play();
         }else if (other.name == "rightWall")
         {
             score.ComputerScore();
             toLeft = false;
+            gameAudio.clip = computerHit;
+            gameAudio.Play();
         }
-
-        ResetBall();    
+        
+        ResetBall();
     }
 
     void ResetBall(){
