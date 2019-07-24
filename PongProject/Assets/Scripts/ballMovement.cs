@@ -7,10 +7,15 @@ public class ballMovement : MonoBehaviour
 
     private Rigidbody2D body;
     private float forceX, forceY;
-    public float posX, posY;
+    [HideInInspector] public float posX, posY, x, y; 
+    private scoring score;
+    private bool toLeft;
     // Start is called before the first frame update
     void Start()
     {
+        x = transform.position.x;
+        y = transform.position.y;
+        score = GameObject.FindObjectOfType<scoring>();
         body = GetComponent<Rigidbody2D>();
         forceX=Random.Range(-5,5);
         if (forceX == 0)    forceX = 2;
@@ -24,6 +29,10 @@ public class ballMovement : MonoBehaviour
     {
         posX = transform.position.x;
         posY = transform.position.y;
+        if (body.velocity.x == 0 && body.velocity.y == 0)
+        {
+            ResetBall();
+        }
     }
 
     void moveBall(){
@@ -41,6 +50,38 @@ public class ballMovement : MonoBehaviour
         {
             body.velocity += new Vector2(0,-0.05f).normalized;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.name == "leftWall")
+        {
+            score.PlayerScore();
+            toLeft = true;
+        }else if (other.name == "rightWall")
+        {
+            score.ComputerScore();
+            toLeft = false;
+        }
+
+        ResetBall();    
+    }
+
+    void ResetBall(){
+        transform.position = new Vector2(x,y);
+        if (!toLeft)
+        {
+            forceX=Random.Range(-5,0);
+            if (forceX == 0)    forceX = -2;
+            forceY=Random.Range(-2,2);
+            if (forceY == 0)    forceY = 2;
+            
+        }else if(toLeft){
+            forceX=Random.Range(0,5);
+            if (forceX == 0)    forceX = 2;
+            forceY=Random.Range(-2,2);
+            if (forceY == 0)    forceY = 2;
+        }
+        moveBall();
     }
 
 }
