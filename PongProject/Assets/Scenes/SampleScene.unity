@@ -1019,11 +1019,8 @@ MonoBehaviour:
   x: 0
   y: 0
   ball: {fileID: 8300000, guid: 01e2f571f73c1a446bdc68583db26ed3, type: 3}
-  menu: {fileID: 8300000, guid: 34f3faf2f47c62e47a1fdde1d7a266d6, type: 3}
   playerHit: {fileID: 8300000, guid: ecce050c2c09c6d429cb92b3fc6b42a7, type: 3}
   computerHit: {fileID: 8300000, guid: 0f6be73ed6a432840872388e53927572, type: 3}
-  playerWin: {fileID: 8300000, guid: ccc32ed071f5aa94baeac4caf7a730dd, type: 3}
-  computerWin: {fileID: 8300000, guid: d56555ffcbdfc034b83265fc3e63b63f, type: 3}
 --- !u!50 &1269076103
 Rigidbody2D:
   serializedVersion: 4
@@ -1299,7 +1296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1342905349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 1162592354}
@@ -1523,7 +1520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924480699}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.5, y: 0, z: 0}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 1532511244}
