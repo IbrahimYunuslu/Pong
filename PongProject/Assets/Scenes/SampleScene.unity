@@ -224,7 +224,7 @@ MonoBehaviour:
   computerScoreUI: {fileID: 1247712349}
   userScore: 0
   computerScore: 0
-  beatingScore: 1
+  beatingScore: 10
 --- !u!1 &316237577
 GameObject:
   m_ObjectHideFlags: 0
